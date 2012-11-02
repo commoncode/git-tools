@@ -1,8 +1,11 @@
 #!/bin/bash
 
-export CHANGELOG_FILE="CHANGELOG.md"
-export VERSION_FILE="VERSION"
-CHANGE_FILE="._changed-files.txt"
+# Assume that this script has been imported as a submodule, get top level of parent git repo.
+DIR="$( cd -P "$( dirname "${BASH_SOURCE[0]}" )/../" && git rev-parse --show-toplevel )"
+
+export CHANGELOG_FILE="$DIR/CHANGELOG.md"
+export VERSION_FILE="$DIR/VERSION"
+CHANGE_FILE="$DIR/._changed-files.txt"
 
 prependToFile() {
 	echo -e "$2" | cat - $1 > .git-hotfix-tmp
