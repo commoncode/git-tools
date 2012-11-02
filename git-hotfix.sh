@@ -8,8 +8,7 @@ printUsage() {
 	echo "Usage: $0 <version> <start|finish|both> [message]"
 }
 
-REALPATH=$(readlink $0)
-DIR=`dirname $REALPATH`
+DIR="$( cd -P "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source "$DIR/git-common.sh"
 
 if [ -z "$VERSION" ]; then

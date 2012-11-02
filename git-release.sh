@@ -6,8 +6,7 @@ printUsage() {
 	echo "Usage: $0 <new version>"
 }
 
-REALPATH=$(readlink $0)
-DIR=`dirname $REALPATH`
+DIR="$( cd -P "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source "$DIR/git-common.sh"
 
 PREVIOUS_VERSION=`cat $VERSION_FILE`
