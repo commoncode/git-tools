@@ -1,6 +1,7 @@
 #!/bin/bash
 
 VERSION=$1
+NOW=`date`
 
 printUsage() {
 	echo "Usage: $0 <new version>"
@@ -28,7 +29,7 @@ echo "### git co master && git pull origin master && git co develop && git pull 
 	&& echo "### git flow release start $VERSION" \
 	&& git flow release start $VERSION \
 	&& echo $VERSION > $VERSION_FILE \
-	&& prependToChangeLog "# Release $VERSION\n\n`getCommitMessagesSince $PREVIOUS_VERSION`\n" \
+	&& prependToChangeLog "# Release $VERSION - $NOW\n\n`getCommitMessagesSince $PREVIOUS_VERSION`\n" \
 	&& echo "### git commit $VERSION_FILE $CHANGELOG_FILE" \
 	&& git commit -m "Updated $VERSION_FILE and $CHANGELOG_FILE" $VERSION_FILE $CHANGELOG_FILE \
 	&& echo "### git flow release finish -mrelease/$VERSION $VERSION" \
