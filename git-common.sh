@@ -1,6 +1,8 @@
 #!/bin/bash
 
 # Assume that this script has been imported as a submodule, get top level of parent git repo.
+GIT_TOOLS_DIR="$( cd -P "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+GIT_TOOLS_HOOKS="$GIT_TOOLS_DIR/../git-tools-hooks"
 DIR="$( cd -P "$( dirname "${BASH_SOURCE[0]}" )/../" && git rev-parse --show-toplevel )"
 
 export CHANGELOG_FILE="$DIR/CHANGELOG.md"
